@@ -215,10 +215,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="/assets/AdminLTE/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/assets/AdminLTE/dist/js/demo.js"></script>
+
 <script src="/assets/AdminLTE/plugins/summernote/summernote-bs4.min.js"></script>
 <script>
     $(function(){
-        $('#deskripsi'.summernote())
+        $('#deskripsi').summernote();
     })
 </script>
 </body>
