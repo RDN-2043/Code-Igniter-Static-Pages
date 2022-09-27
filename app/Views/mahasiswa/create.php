@@ -19,7 +19,7 @@
         <label for="deskripsi">Deskripsi</label>
         <textarea type="text" name="deskripsi" class="form-control" id="deskripsi"></textarea>
       </div>
-      <button type="submit" class="btn btn-primary"> <i> class="fa fa-paper-plane"</i> Submit</button>
+      <button type="submit" class="btn btn-primary"> <i class="fa fa-paper-plane"></i> Submit</button>
     </div>
   </div>
 </form>

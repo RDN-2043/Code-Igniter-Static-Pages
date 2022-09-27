@@ -1,6 +1,6 @@
 <?= $this->extend('template') ?>
 <?= $this->section('content') ?>
-<a href="/create/" type="button" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
+<a href="/create" type="button" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah</a>
 <table class="table table-striped">
   <thead>
     <tr>

@@ -9,6 +9,7 @@ class MahasiswaController extends BaseController
 {
     public function index()
     {
+        //
         $mahasiswaModel = new Mahasiswa();
         $mahasiswa = $mahasiswaModel->findAll();
 
@@ -19,42 +20,31 @@ class MahasiswaController extends BaseController
 
         return view('mahasiswa/list', $data);
     }
-
-    public function create(){
-        if(!$this->validate([
-            'npm' => 'required',
-            'nama' => 'required',
-            'alamat' => 'required'
-        ])){
-            return redirect()->to('/create');
-        }
-
+    public function create()
+    {
         $data = [
             'title' => 'Create Mahasiswa'
         ];
-
-        return view('mahasiswa/create', $data);
+        return view('mahasiswa/create',$data);
     }
-
     public function store(){
-        if(!$this->validate([
-            'npm' => 'required',
-            'nama' => 'required',
-            'alamat' => 'required',
-            'deskripsi' => 'required'
-        ])){
-            return redirect()->to('/create');
-        }
-
         $mahasiswaModel = new Mahasiswa();
-        $data = [
-            'npm' => $this->request->getPost('npm'),
-            'nama' => $this->request->getPost('nama'),
-            'alamat' => $this->request->getPost('alamat'),
-            'deskripsi' => $this->request->getPost('deskripsi')
-        ];
-
-        $mahasiswaModel->save($data);
+        if(!$this->validate([
+            'npm' => 'required|is_unique[mahasiswa.npm]',
+            'nama' => 'required',
+            'alamat' => 'required'
+        ])){
+            $data = [
+                'title' => 'Create Mahasiswa',
+                'validation' => $this->validator
+            ];
+            return redirect()->to('/create')->withInput();
+        }
+        $mahasiswaModel->save([
+            'npm' => $this->request->getVar('npm'),
+            'nama' => $this->request->getVar('nama'),
+            'alamat' => $this->request->getVar('alamat')
+        ]);
         return redirect()->to('/mahasiswa');
     }
 
